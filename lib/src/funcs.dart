@@ -1,5 +1,7 @@
 //import 'package:wqi_program/src/utils.dart';
 
+import 'dart:math';
+
 qualityRatingIndexFunc(double ci, int si, {bool isPh = false}) {
   if (isPh) {
     print("IS PH: TRUE");
@@ -91,15 +93,39 @@ industrialUseFunc(hco3, so4, na, cl, kp, co3) {
   ];
 }
 
-irigationUseFunc() {}
+irrigationUseFunc(na, mg, ca, kp, hco3) {
+  ca = (ca * 2) / 40.08;
+  mg = (mg * 2) / 24.31;
+  na = (na * 1) / 22.99;
+  kp = (kp * 1) / 39.10;
+  hco3 = (hco3 * 1) / 61.02;
+
+  final a = (na * 100) / (ca + mg + na + kp);
+  final b = na / sqrt((ca + mg) / 2);
+  final c = na / (ca + mg);
+  final d = hco3 - ca;
+  final e = ((na + kp) * 100) / (na + kp + ca + mg);
+  final f = (na + sqrt(hco3)) / (ca + mg + na);
+
+  return [
+    {"%Na": a},
+    {"SAR": b},
+    {"KR": c},
+    {"RSBC": d},
+    {"SSP": e},
+    {"PI": f},
+  ];
+}
+
 geeoChemicalIndicesFunc(na, cl, so4, kp) {
   na = (na * 1) / 22.99;
   so4 = (so4 * 2) / 96.06;
   cl = (cl * 1) / 35.45;
   kp = (kp * 1) / 39.10;
-  //final a = divide(na - cl, so4);
+
   final a = (na - cl) / so4;
   final b = ((na + kp) - cl) / so4;
+
   return [
     {"BEI": a},
     //{"BEI2": c},
