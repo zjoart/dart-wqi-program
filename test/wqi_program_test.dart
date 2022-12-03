@@ -1,8 +1,8 @@
-import 'package:wqi_program/wqi_program.dart';
-import 'package:test/test.dart';
+// import 'package:wqi_program/main.dart';
+// import 'package:test/test.dart';
 
 void main() {
   // test('calculate', () {
-  //   expect(calculate(), 42);
+  //   expect(startCalculation(), 42);
   // });
 }
