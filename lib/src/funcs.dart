@@ -89,7 +89,7 @@ industrialUseFunc(double hco3, double so4, double na, double cl, double kp,
   so4 = ((so4 * 2) / 96.06).truncateToDecimalPlaces(8);
   cl = ((cl * 1) / 35.45).truncateToDecimalPlaces(8);
   kp = ((kp * 1) / 39.10).truncateToDecimalPlaces(8);
-  co3 = ((co3 * 2) / 12.0107).truncateToDecimalPlaces(8);
+  co3 = ((co3 * 2) / 60.009).truncateToDecimalPlaces(8);
 
   final a = ((so4 + cl) / (hco3 + co3)).truncateToDecimalPlaces(8);
   final b = ((cl - (na + kp)) / cl).truncateToDecimalPlaces(8);

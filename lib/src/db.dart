@@ -1,41 +1,7 @@
+import 'package:wqi_program/src/b.dart';
+
 getParams() {
-  return {
-    "rweight": getrelativeWeights(),
-    "samples": [
-      {
-        "name": "s1",
-        "params": [
-          {"name": "ph", "analyzedParamter": 6.3},
-          {"name": "tds", "analyzedParamter": 87},
-          {"name": "ca", "analyzedParamter": 112.7},
-          {"name": "mg", "analyzedParamter": 11.1},
-          {"name": "na", "analyzedParamter": 305.2},
-          {"name": "k", "analyzedParamter": 4.5},
-          {"name": "hco3", "analyzedParamter": 236.4},
-          {"name": "cl", "analyzedParamter": 88.9},
-          {"name": "no3", "analyzedParamter": 0.09},
-          {"name": "so4", "analyzedParamter": 17.9},
-          {"name": "co3", "analyzedParamter": 116.4},
-        ],
-      },
-      {
-        "name": "s2",
-        "params": [
-          {"name": "ph", "analyzedParamter": 6.3},
-          {"name": "tds", "analyzedParamter": 87},
-          {"name": "ca", "analyzedParamter": 112.7},
-          {"name": "mg", "analyzedParamter": 11.1},
-          {"name": "na", "analyzedParamter": 305.2},
-          {"name": "k", "analyzedParamter": 4.5},
-          {"name": "hco3", "analyzedParamter": 236.4},
-          {"name": "cl", "analyzedParamter": 88.9},
-          {"name": "no3", "analyzedParamter": 0.09},
-          {"name": "so4", "analyzedParamter": 17.9},
-          {"name": "co3", "analyzedParamter": 116.4},
-        ],
-      },
-    ]
-  };
+  return {"rweight": getrelativeWeights(), "samples": getSamples()};
 }
 
 // getrelativeWeights() {
@@ -191,3 +157,20 @@ getrelativeWeights() {
 //     250,
 //     200,
 //   ];
+
+// {
+//         "name": "lx-1",
+//         "params": [
+//           {"name": "ph", "analyzedParamter": 6.86},
+//           {"name": "tds", "analyzedParamter": 597},
+//           {"name": "ca", "analyzedParamter": 77.85},
+//           {"name": "mg", "analyzedParamter": 10.79},
+//           {"name": "na", "analyzedParamter": 103.23},
+//           {"name": "k", "analyzedParamter": 64.86},
+//           {"name": "hco3", "analyzedParamter": 156.16},
+//           {"name": "cl", "analyzedParamter": 38.25},
+//           {"name": "no3", "analyzedParamter": 65.74},
+//           {"name": "so4", "analyzedParamter": 90.01},
+//           {"name": "co3", "analyzedParamter": 67.54},
+//         ],
+//       },

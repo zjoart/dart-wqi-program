@@ -1,9 +1,7 @@
 import 'package:wqi_program/src/models/relative_weight_model.dart';
 import 'package:wqi_program/src/models/sample_model.dart';
-import 'package:wqi_program/src/models/water_model.dart';
 
 import 'src/funcs.dart';
-import 'src/utils.dart';
 
 startCalculation(List<Rweight> rweight, List<Params> params) async {
   final qualityRatingMap = {};
@@ -12,7 +10,7 @@ startCalculation(List<Rweight> rweight, List<Params> params) async {
   List<double> qualityRatingList = [];
   List<double> subIndexList = [];
 
-  assert(rweight.length == 10 && params.length == 10);
+  assert(rweight.length == 10 && params.length == 13);
   for (int i = 0; i < 10; i++) {
     double qualityRating = await qualityRatingIndexFunc(
       params[i].analyzedParamter,
@@ -65,6 +63,8 @@ startCalculation(List<Rweight> rweight, List<Params> params) async {
   return {
     "Quality Rating": qualityRatingMap,
     "Sub Index": sunIndexMap,
+    "Sum of Sub Index": sumOfSubindex,
+    "Sum Relative Weight": sumOfRelativeWeight,
     "WQI": wqi,
     "Ionic Ratios": ionicRatios,
     "Industrial Use": industrialUse,
