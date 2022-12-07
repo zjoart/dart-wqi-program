@@ -2,37 +2,45 @@
 
 import 'dart:math';
 
-qualityRatingIndexFunc(double ci, int si, {bool isPh = false}) {
+import 'package:wqi_program/src/utils.dart';
+
+qualityRatingIndexFunc(ci, si, {bool isPh = false, bool isDo = false}) async {
+  double result;
   if (isPh) {
     print("IS PH: TRUE");
-    return (((ci - 7.0) / 1.5) * 100);
+    result = (((ci - 7.0) / (1.5)) * 100);
+  } else if (isDo) {
+    print("IS DO: TRUE");
+    result = (((ci - 14.6) / (5.0 - 14.6)) * 100);
   } else {
-    return ((ci / si) * 100);
+    result = ((ci / si) * 100);
   }
+  return result.truncateToDecimalPlaces(8);
 }
 
-subIndexFunc(wi, qi) {
-  return (wi * qi);
+subIndexFunc(wi, qi) async {
+  double result;
+  result = (wi * qi);
+  return result.truncateToDecimalPlaces(8);
 }
 
-sumOfSubindexFunc(List subIndexes) {
-  double result = 0;
+sumOfSubindexFunc(List<double> subIndexes) async {
+  double result = 0.0;
   for (int i = 0; i < subIndexes.length; i++) {
-    result = result;
-    //.truncateToDecimalPlaces(3);
-    print('$i Result here is $result');
-    print(subIndexes[i]);
+    subIndexes[i] = subIndexes[i].toPrecision(3);
     result += subIndexes[i];
-    print('$i Result here is $result');
   }
-  return result;
+  return result.truncateToDecimalPlaces(8);
 }
 
-waterQualityIndexFunc(sumOfSubindex, sumOfRelativeWeight) {
-  return sumOfSubindex / sumOfRelativeWeight;
+waterQualityIndexFunc(sumOfSubindex, sumOfRelativeWeight) async {
+  double result;
+  result = sumOfSubindex / sumOfRelativeWeight;
+  return result.truncateToDecimalPlaces(8);
 }
 
-List<Map<String, dynamic>> ionicRatiosFunc(ca, mg, hco3, so4, na, cl) {
+ionicRatiosFunc(
+    double ca, double mg, double hco3, double so4, double na, double cl) async {
   print("Ca is $ca");
   print("Mg is $mg");
   print("Na is $na");
@@ -40,12 +48,12 @@ List<Map<String, dynamic>> ionicRatiosFunc(ca, mg, hco3, so4, na, cl) {
   print("So is $so4");
   print("Cl is $cl");
   print(".......................");
-  ca = (ca * 2) / 40.08;
-  mg = (mg * 2) / 24.31;
-  na = (na * 1) / 22.99;
-  hco3 = (hco3 * 1) / 61.02;
-  so4 = (so4 * 2) / 96.06;
-  cl = (cl * 1) / 35.45;
+  ca = ((ca * 2) / 40.08).truncateToDecimalPlaces(8);
+  mg = ((mg * 2) / 24.31).truncateToDecimalPlaces(8);
+  na = ((na * 1) / 22.99).truncateToDecimalPlaces(8);
+  hco3 = ((hco3 * 1) / 61.02).truncateToDecimalPlaces(8);
+  so4 = ((so4 * 2) / 96.06).truncateToDecimalPlaces(8);
+  cl = ((cl * 1) / 35.45).truncateToDecimalPlaces(8);
 
   print("Ca is $ca");
   print("Mg is $mg");
@@ -53,82 +61,70 @@ List<Map<String, dynamic>> ionicRatiosFunc(ca, mg, hco3, so4, na, cl) {
   print("Hco is $hco3");
   print("So is $so4");
   print("Cl is $cl");
-  final a = (ca + mg) / (hco3 + so4);
-  final b = na / cl;
-  final c = hco3 / cl;
-  final d = cl / hco3;
-  final e = so4 / cl;
-  final f = cl / so4;
-  final g = ca / mg;
-  final h = ca / (ca + so4);
+  final a = ((ca + mg) / (hco3 + so4)).truncateToDecimalPlaces(8);
+  final b = (na / cl).truncateToDecimalPlaces(8);
+  final c = (hco3 / cl).truncateToDecimalPlaces(8);
+  final d = (cl / hco3).truncateToDecimalPlaces(8);
+  final e = (so4 / cl).truncateToDecimalPlaces(8);
+  final f = (cl / so4).truncateToDecimalPlaces(8);
+  final g = (ca / mg).truncateToDecimalPlaces(8);
+  final h = (ca / (ca + so4)).truncateToDecimalPlaces(8);
 
-  return [
-    {"(ca + mg) / (hco3 + so4)": a},
-    {"na / cl": b},
-    {"hco3 / cl": c},
-    {"cl / hco3": d},
-    {"so4 / cl": e},
-    {"cl / so4": f},
-    {"ca / mg": g},
-    {"ca / (ca + so4)": h},
-  ];
+  return {
+    "(ca + mg) / (hco3 + so4)": a,
+    "na / cl": b,
+    "hco3 / cl": c,
+    "cl / hco3": d,
+    "so4 / cl": e,
+    "cl / so4": f,
+    "ca / mg": g,
+    "ca / (ca + so4)": h
+  };
 }
 
-industrialUseFunc(hco3, so4, na, cl, kp, co3) {
-  na = (na * 1) / 22.99;
-  hco3 = (hco3 * 1) / 61.02;
-  so4 = (so4 * 2) / 96.06;
-  cl = (cl * 1) / 35.45;
-  kp = (kp * 1) / 39.10;
-  co3 = (co3 * 2) / 12.0107;
+industrialUseFunc(double hco3, double so4, double na, double cl, double kp,
+    double co3) async {
+  na = ((na * 1) / 22.99).truncateToDecimalPlaces(8);
+  hco3 = ((hco3 * 1) / 61.02).truncateToDecimalPlaces(8);
+  so4 = ((so4 * 2) / 96.06).truncateToDecimalPlaces(8);
+  cl = ((cl * 1) / 35.45).truncateToDecimalPlaces(8);
+  kp = ((kp * 1) / 39.10).truncateToDecimalPlaces(8);
+  co3 = ((co3 * 2) / 12.0107).truncateToDecimalPlaces(8);
 
-  final a = (so4 + cl) / (hco3 + co3);
-  final b = (cl - (na + kp)) / cl;
-  final c = (cl - (na + kp)) / (so4 + hco3 + co3);
+  final a = ((so4 + cl) / (hco3 + co3)).truncateToDecimalPlaces(8);
+  final b = ((cl - (na + kp)) / cl).truncateToDecimalPlaces(8);
+  final c = ((cl - (na + kp)) / (so4 + hco3 + co3)).truncateToDecimalPlaces(8);
 
-  return [
-    {"L − S": a},
-    {"CAI 1": b},
-    {"CAI 2": c}
-  ];
+  return {"L − S": a, "CAI 1": b, "CAI 2": c};
 }
 
-irrigationUseFunc(na, mg, ca, kp, hco3) {
-  ca = (ca * 2) / 40.08;
-  mg = (mg * 2) / 24.31;
-  na = (na * 1) / 22.99;
-  kp = (kp * 1) / 39.10;
-  hco3 = (hco3 * 1) / 61.02;
+irrigationUseFunc(
+    double na, double mg, double ca, double kp, double hco3) async {
+  ca = ((ca * 2) / 40.08).truncateToDecimalPlaces(8);
+  mg = ((mg * 2) / 24.31).truncateToDecimalPlaces(8);
+  na = ((na * 1) / 22.99).truncateToDecimalPlaces(8);
+  kp = ((kp * 1) / 39.10).truncateToDecimalPlaces(8);
+  hco3 = ((hco3 * 1) / 61.02).truncateToDecimalPlaces(8);
 
-  final a = (na * 100) / (ca + mg + na + kp);
-  final b = na / sqrt((ca + mg) / 2);
-  final c = na / (ca + mg);
-  final d = hco3 - ca;
-  final e = ((na + kp) * 100) / (na + kp + ca + mg);
-  final f = (na + sqrt(hco3)) / (ca + mg + na);
+  final a = ((na * 100) / (ca + mg + na + kp)).truncateToDecimalPlaces(8);
+  final b = (na / sqrt((ca + mg) / 2)).truncateToDecimalPlaces(8);
+  final c = (na / (ca + mg)).truncateToDecimalPlaces(8);
+  final d = (hco3 - ca).truncateToDecimalPlaces(8);
+  final e =
+      (((na + kp) * 100) / (na + kp + ca + mg)).truncateToDecimalPlaces(8);
+  final f = ((na + sqrt(hco3)) / (ca + mg + na)).truncateToDecimalPlaces(8);
 
-  return [
-    {"%Na": a},
-    {"SAR": b},
-    {"KR": c},
-    {"RSBC": d},
-    {"SSP": e},
-    {"PI": f},
-  ];
+  return {"%Na": a, "SAR": b, "KR": c, "RSBC": d, "SSP": e, "PI": f};
 }
 
-geeoChemicalIndicesFunc(na, cl, so4, kp) {
-  na = (na * 1) / 22.99;
-  so4 = (so4 * 2) / 96.06;
-  cl = (cl * 1) / 35.45;
-  kp = (kp * 1) / 39.10;
+geeoChemicalIndicesFunc(double na, double cl, double so4, double kp) async {
+  na = ((na * 1) / 22.99).truncateToDecimalPlaces(8);
+  so4 = ((so4 * 2) / 96.06).truncateToDecimalPlaces(8);
+  cl = ((cl * 1) / 35.45).truncateToDecimalPlaces(8);
+  kp = ((kp * 1) / 39.10).truncateToDecimalPlaces(8);
 
-  final a = (na - cl) / so4;
-  final b = ((na + kp) - cl) / so4;
+  final a = ((na - cl) / so4).truncateToDecimalPlaces(8);
+  final b = (((na + kp) - cl) / so4).truncateToDecimalPlaces(8);
 
-  return [
-    {"BEI": a},
-    //{"BEI2": c},
-    {"MGI", b}
-  ];
+  return {"BEI": a, "MGI": b};
 }

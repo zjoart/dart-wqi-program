@@ -1,47 +1,74 @@
-import 'dart:developer';
-
+import 'package:wqi_program/src/models/relative_weight_model.dart';
 import 'package:wqi_program/src/models/sample_model.dart';
+import 'package:wqi_program/src/models/water_model.dart';
 
 import 'src/funcs.dart';
 import 'src/utils.dart';
 
-startCalculation() {
+startCalculation(List<Rweight> rweight, List<Params> params) async {
+  final qualityRatingMap = {};
+  final sunIndexMap = {};
+
   List<double> qualityRatingList = [];
   List<double> subIndexList = [];
-  final a = qualityRatingIndexFunc(8.12, 5);
-  log("Quality rating is: $a");
-  final b = subIndexFunc(0.2, a);
-  log("SubIndex is $b");
-  //    for (int i = 0; i < samples.rweight.length; i++) {
-  //   final qaulityRating = w.qualityRating(
-  //       samples.samples[0].params[i].ap, samples.rweight[i].si!,
-  //       isPh: samples.samples[0].params[i].name == 'ph');
-  //   // qualityRatingList.add(qaulityRating.toPrecision(3));
-  //   // print(
-  //   //     '${samples.rweight[i].rw} - $qaulityRating  is : ${samples.rweight[i].rw * qaulityRating}');
-  //   final subIndex = w.subIndex(samples.rweight[i].rw, qaulityRating);
 
-  //   subIndexList.add(subIndex.truncateToDecimalPlaces(3));
+  assert(rweight.length == 10 && params.length == 10);
+  for (int i = 0; i < 10; i++) {
+    double qualityRating = await qualityRatingIndexFunc(
+      params[i].analyzedParamter,
+      rweight[i].permissibleLimits,
+      isPh: params[i].name == "ph",
+    );
+    qualityRatingMap.addAll({params[i].name: qualityRating});
+    qualityRatingList.add(qualityRating);
+    // qualityRating = qualityRating.toPrecision(3);
+    print("a $qualityRating");
+    final subIndex =
+        await subIndexFunc(rweight[i].relativeWeight, qualityRating);
+    sunIndexMap.addAll({params[i].name: subIndex});
+    subIndexList.add(subIndex);
+  }
+  print("QUALITY RATING LIST: $qualityRatingList");
+  print("SUBINDEX LIST: $subIndexList");
+  double sumOfRelativeWeight = 0.0;
 
-  //   print(
-  //       "Quality rating for ${samples.samples[0].name} and parameter ${samples.rweight[i].name} is: ${qaulityRating} and Subindex is: ${subIndex}");
-  // }
+  for (int i = 0; i < rweight.length; i++) {
+    sumOfRelativeWeight += rweight[i].relativeWeight;
+  }
 
-//   //assert(subIndexList.length == 10 && qualityRatingList.length == 10);
-//   print(subIndexList);
-//   final b = w.wqi(subIndexList);
-//   print("WQI: $b");
-//   for (int i = 0; i < samples.samples.length; i++) {
-//     final cal = samples.samples[i].params.singleWhere((e) => e.name == 'ca').ap;
-//     final mag = samples.samples[i].params.singleWhere((e) => e.name == 'mg').ap;
-//     final hco =
-//         samples.samples[i].params.singleWhere((e) => e.name == 'hco3').ap;
-//     final so4 =
-//         samples.samples[i].params.singleWhere((e) => e.name == 'so4').ap;
-//     final nai = samples.samples[i].params.singleWhere((e) => e.name == 'na').ap;
-//     final clh = samples.samples[i].params.singleWhere((e) => e.name == 'cl').ap;
-//     final kp = samples.samples[i].params.singleWhere((e) => e.name == 'cl').ap;
-//     final ionicRatios = w.ionicRatio(cal, mag, hco, so4, nai, clh);
-//     print("IONIC RATIOS FOR ${samples.samples[i].name} IS: $ionicRatios");
-//   }
+  print("SUM OF RELATIVEWEIGHT: $sumOfRelativeWeight");
+
+  final sumOfSubindex = await sumOfSubindexFunc(subIndexList);
+  print("SUM OF SUB INDEX: $sumOfSubindex");
+
+  final wqi = await waterQualityIndexFunc(sumOfSubindex, sumOfRelativeWeight);
+  print("WQI: $wqi");
+
+//Calculation of other Values
+  final cal = params.singleWhere((e) => e.name == 'ca').analyzedParamter;
+  final mag = params.singleWhere((e) => e.name == 'mg').analyzedParamter;
+  final hco = params.singleWhere((e) => e.name == 'hco3').analyzedParamter;
+  final so4 = params.singleWhere((e) => e.name == 'so4').analyzedParamter;
+  final nai = params.singleWhere((e) => e.name == 'na').analyzedParamter;
+  final chloride = params.singleWhere((e) => e.name == 'cl').analyzedParamter;
+  final kp = params.singleWhere((e) => e.name == 'k').analyzedParamter;
+  final co3 = params.singleWhere((e) => e.name == 'co3').analyzedParamter;
+  final ionicRatios = await ionicRatiosFunc(cal, mag, hco, so4, nai, chloride);
+  final industrialUse =
+      await industrialUseFunc(hco, so4, nai, chloride, kp, co3);
+  final irrigationUse = await irrigationUseFunc(nai, mag, cal, kp, hco);
+  final geoChemicalIndices =
+      await geeoChemicalIndicesFunc(nai, chloride, so4, kp);
+
+  print("IONIC RATIOS  $ionicRatios");
+
+  return {
+    "Quality Rating": qualityRatingMap,
+    "Sub Index": sunIndexMap,
+    "WQI": wqi,
+    "Ionic Ratios": ionicRatios,
+    "Industrial Use": industrialUse,
+    "Irrigation Use": irrigationUse,
+    "Geochemical Indices": geoChemicalIndices
+  };
 }
