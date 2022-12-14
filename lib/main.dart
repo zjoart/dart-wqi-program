@@ -1,17 +1,28 @@
+import 'dart:convert';
+
 import 'package:wqi_program/src/models/relative_weight_model.dart';
 import 'package:wqi_program/src/models/sample_model.dart';
+import 'package:wqi_program/src/utils.dart';
 
-import 'src/funcs.dart';
+import 'src/functions/funcs.dart';
 
-startCalculation(List<Rweight> rweight, List<Params> params) async {
+Future<Map<String, dynamic>> startCalculation(
+    List<Rweight> rweight, List<Params> params) async {
   final qualityRatingMap = {};
   final sunIndexMap = {};
 
   List<double> qualityRatingList = [];
   List<double> subIndexList = [];
-
-  assert(rweight.length == 10 && params.length == 13);
-  for (int i = 0; i < 10; i++) {
+  int weightTotal = 0;
+  List<double> relativeWeightList = [];
+  // print(rweight.length);
+  // print(params.length);
+  assert(rweight.length == 12 && params.length == 13);
+  for (int i = 0; i < rweight.length; i++) {
+    weightTotal += rweight[i].weight;
+  }
+  print("Weight total: $weightTotal");
+  for (int i = 0; i < rweight.length; i++) {
     double qualityRating = await qualityRatingIndexFunc(
       params[i].analyzedParamter,
       rweight[i].permissibleLimits,
@@ -20,27 +31,30 @@ startCalculation(List<Rweight> rweight, List<Params> params) async {
     qualityRatingMap.addAll({params[i].name: qualityRating});
     qualityRatingList.add(qualityRating);
     // qualityRating = qualityRating.toPrecision(3);
-    print("a $qualityRating");
-    final subIndex =
-        await subIndexFunc(rweight[i].relativeWeight, qualityRating);
+    // print("a $qualityRating");
+    final relativeWeight =
+        (rweight[i].weight / weightTotal).truncateToDecimalPlaces(3);
+    print("relative weight for ${params[i].name}: $relativeWeight ");
+    relativeWeightList.add(relativeWeight);
+    final subIndex = await subIndexFunc(relativeWeight, qualityRating);
     sunIndexMap.addAll({params[i].name: subIndex});
     subIndexList.add(subIndex);
   }
-  print("QUALITY RATING LIST: $qualityRatingList");
-  print("SUBINDEX LIST: $subIndexList");
+  // print("QUALITY RATING LIST: $qualityRatingList");
+  // print("SUBINDEX LIST: $subIndexList");
   double sumOfRelativeWeight = 0.0;
-
-  for (int i = 0; i < rweight.length; i++) {
-    sumOfRelativeWeight += rweight[i].relativeWeight;
+  assert(relativeWeightList.length == 12);
+  for (int i = 0; i < relativeWeightList.length; i++) {
+    sumOfRelativeWeight += relativeWeightList[i];
   }
 
   print("SUM OF RELATIVEWEIGHT: $sumOfRelativeWeight");
 
   final sumOfSubindex = await sumOfSubindexFunc(subIndexList);
-  print("SUM OF SUB INDEX: $sumOfSubindex");
+  // print("SUM OF SUB INDEX: $sumOfSubindex");
 
   final wqi = await waterQualityIndexFunc(sumOfSubindex, sumOfRelativeWeight);
-  print("WQI: $wqi");
+  // print("WQI: $wqi");
 
 //Calculation of other Values
   final cal = params.singleWhere((e) => e.name == 'ca').analyzedParamter;
@@ -58,17 +72,17 @@ startCalculation(List<Rweight> rweight, List<Params> params) async {
   final geoChemicalIndices =
       await geeoChemicalIndicesFunc(nai, chloride, so4, kp);
 
-  print("IONIC RATIOS  $ionicRatios");
+  //print("IONIC RATIOS  $ionicRatios");
 
   return {
-    "Quality Rating": qualityRatingMap,
-    "Sub Index": sunIndexMap,
-    "Sum of Sub Index": sumOfSubindex,
-    "Sum Relative Weight": sumOfRelativeWeight,
-    "WQI": wqi,
-    "Ionic Ratios": ionicRatios,
-    "Industrial Use": industrialUse,
-    "Irrigation Use": irrigationUse,
-    "Geochemical Indices": geoChemicalIndices
+    "qualityRatingModel": qualityRatingMap,
+    "subIndexModel": sunIndexMap,
+    "sumofSubIndex": sumOfSubindex,
+    "sumOfRelativeWeight": sumOfRelativeWeight,
+    "waterQualityIndex": wqi,
+    "ionicRatioModel": ionicRatios,
+    "industrialUseModel": industrialUse,
+    "irrigationUseModel": irrigationUse,
+    "geoChemicalIndicesModel": geoChemicalIndices
   };
 }

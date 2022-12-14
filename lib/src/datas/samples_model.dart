@@ -12,6 +12,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 38.25},
           {"name": "no3", "analyzedParamter": 65.74},
           {"name": "so4", "analyzedParamter": 90.01},
+          {"name": "bod", "analyzedParamter": 128.09},
+          {"name": "cod", "analyzedParamter": 367.75},
           {"name": "co3", "analyzedParamter": 67.54}
         ]
       },
@@ -28,6 +30,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 41.08},
           {"name": "no3", "analyzedParamter": 62.89},
           {"name": "so4", "analyzedParamter": 111.13},
+          {"name": "bod", "analyzedParamter": 122.49},
+          {"name": "cod", "analyzedParamter": 348.26},
           {"name": "co3", "analyzedParamter": 73.49}
         ]
       },
@@ -44,6 +48,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 39.76},
           {"name": "no3", "analyzedParamter": 59.84},
           {"name": "so4", "analyzedParamter": 71.79},
+          {"name": "bod", "analyzedParamter": 119.54},
+          {"name": "cod", "analyzedParamter": 307.16},
           {"name": "co3", "analyzedParamter": 76.11}
         ]
       },
@@ -60,6 +66,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 35.87},
           {"name": "no3", "analyzedParamter": 69.28},
           {"name": "so4", "analyzedParamter": 184.24},
+          {"name": "bod", "analyzedParamter": 133.44},
+          {"name": "cod", "analyzedParamter": 375.22},
           {"name": "co3", "analyzedParamter": 70.24}
         ]
       },
@@ -76,6 +84,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 33.57},
           {"name": "no3", "analyzedParamter": 61.79},
           {"name": "so4", "analyzedParamter": 139.37},
+          {"name": "bod", "analyzedParamter": 124.19},
+          {"name": "cod", "analyzedParamter": 321.18},
           {"name": "co3", "analyzedParamter": 65.33}
         ]
       },
@@ -92,6 +102,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 48.79},
           {"name": "no3", "analyzedParamter": 16.85},
           {"name": "so4", "analyzedParamter": 18.48},
+          {"name": "bod", "analyzedParamter": 92.65},
+          {"name": "cod", "analyzedParamter": 237.15},
           {"name": "co3", "analyzedParamter": 73.47}
         ]
       },
@@ -108,6 +120,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 43.04},
           {"name": "no3", "analyzedParamter": 21.57},
           {"name": "so4", "analyzedParamter": 17.95},
+          {"name": "bod", "analyzedParamter": 104.79},
+          {"name": "cod", "analyzedParamter": 249.38},
           {"name": "co3", "analyzedParamter": 39.96}
         ]
       },
@@ -124,6 +138,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 23.18},
           {"name": "no3", "analyzedParamter": 17.95},
           {"name": "so4", "analyzedParamter": 13.99},
+          {"name": "bod", "analyzedParamter": 95.29},
+          {"name": "cod", "analyzedParamter": 236.95},
           {"name": "co3", "analyzedParamter": 29.88}
         ]
       },
@@ -140,6 +156,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 29.65},
           {"name": "no3", "analyzedParamter": 15.96},
           {"name": "so4", "analyzedParamter": 11.61},
+          {"name": "bod", "analyzedParamter": 89.15},
+          {"name": "cod", "analyzedParamter": 231.35},
           {"name": "co3", "analyzedParamter": 83.45}
         ]
       },
@@ -156,6 +174,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 39.18},
           {"name": "no3", "analyzedParamter": 67.59},
           {"name": "so4", "analyzedParamter": 16.21},
+          {"name": "bod", "analyzedParamter": 134.69},
+          {"name": "cod", "analyzedParamter": 361.21},
           {"name": "co3", "analyzedParamter": 71.25}
         ]
       },
@@ -172,6 +192,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 31.86},
           {"name": "no3", "analyzedParamter": 49.76},
           {"name": "so4", "analyzedParamter": 37.22},
+          {"name": "bod", "analyzedParamter": 107.66},
+          {"name": "cod", "analyzedParamter": 256.76},
           {"name": "co3", "analyzedParamter": 62.49}
         ]
       },
@@ -188,6 +210,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 37.17},
           {"name": "no3", "analyzedParamter": 66.13},
           {"name": "so4", "analyzedParamter": 35.91},
+          {"name": "bod", "analyzedParamter": 126.87},
+          {"name": "cod", "analyzedParamter": 364.17},
           {"name": "co3", "analyzedParamter": 102.36}
         ]
       },
@@ -204,6 +228,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 28.69},
           {"name": "no3", "analyzedParamter": 21.86},
           {"name": "so4", "analyzedParamter": 36.43},
+          {"name": "bod", "analyzedParamter": 106.12},
+          {"name": "cod", "analyzedParamter": 267.44},
           {"name": "co3", "analyzedParamter": 59.35}
         ]
       },
@@ -220,6 +246,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 26.75},
           {"name": "no3", "analyzedParamter": 23.15},
           {"name": "so4", "analyzedParamter": 41.18},
+          {"name": "bod", "analyzedParamter": 108.43},
+          {"name": "cod", "analyzedParamter": 256.11},
           {"name": "co3", "analyzedParamter": 54.66}
         ]
       },
@@ -236,6 +264,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 23.81},
           {"name": "no3", "analyzedParamter": 18.65},
           {"name": "so4", "analyzedParamter": 20.59},
+          {"name": "bod", "analyzedParamter": 97.58},
+          {"name": "cod", "analyzedParamter": 243.18},
           {"name": "co3", "analyzedParamter": 77.21}
         ]
       },
@@ -252,6 +282,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 57.69},
           {"name": "no3", "analyzedParamter": 57.13},
           {"name": "so4", "analyzedParamter": 26.66},
+          {"name": "bod", "analyzedParamter": 115.61},
+          {"name": "cod", "analyzedParamter": 296.38},
           {"name": "co3", "analyzedParamter": 70.16}
         ]
       },
@@ -268,6 +300,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 54.86},
           {"name": "no3", "analyzedParamter": 59.35},
           {"name": "so4", "analyzedParamter": 18.74},
+          {"name": "bod", "analyzedParamter": 117.88},
+          {"name": "cod", "analyzedParamter": 285.79},
           {"name": "co3", "analyzedParamter": 63.45}
         ]
       },
@@ -284,6 +318,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 43.15},
           {"name": "no3", "analyzedParamter": 52.81},
           {"name": "so4", "analyzedParamter": 86.31},
+          {"name": "bod", "analyzedParamter": 112.85},
+          {"name": "cod", "analyzedParamter": 344.18},
           {"name": "co3", "analyzedParamter": 64.17}
         ]
       },
@@ -300,6 +336,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 45.67},
           {"name": "no3", "analyzedParamter": 68.39},
           {"name": "so4", "analyzedParamter": 157.84},
+          {"name": "bod", "analyzedParamter": 131.58},
+          {"name": "cod", "analyzedParamter": 351.39},
           {"name": "co3", "analyzedParamter": 65.12}
         ]
       },
@@ -316,6 +354,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 46.19},
           {"name": "no3", "analyzedParamter": 72.46},
           {"name": "so4", "analyzedParamter": 133.03},
+          {"name": "bod", "analyzedParamter": 135.81},
+          {"name": "cod", "analyzedParamter": 356.13},
           {"name": "co3", "analyzedParamter": 87.14}
         ]
       },
@@ -332,6 +372,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 39.87},
           {"name": "no3", "analyzedParamter": 68.71},
           {"name": "so4", "analyzedParamter": 136.46},
+          {"name": "bod", "analyzedParamter": 132.72},
+          {"name": "cod", "analyzedParamter": 339.29},
           {"name": "co3", "analyzedParamter": 80.23}
         ]
       },
@@ -348,6 +390,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 41.04},
           {"name": "no3", "analyzedParamter": 61.26},
           {"name": "so4", "analyzedParamter": 192.42},
+          {"name": "bod", "analyzedParamter": 128.69},
+          {"name": "cod", "analyzedParamter": 267.16},
           {"name": "co3", "analyzedParamter": 65.49}
         ]
       },
@@ -364,6 +408,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 48.15},
           {"name": "no3", "analyzedParamter": 85.11},
           {"name": "so4", "analyzedParamter": 123.26},
+          {"name": "bod", "analyzedParamter": 139.83},
+          {"name": "cod", "analyzedParamter": 334.24},
           {"name": "co3", "analyzedParamter": 77.58}
         ]
       },
@@ -380,6 +426,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 33.27},
           {"name": "no3", "analyzedParamter": 76.2},
           {"name": "so4", "analyzedParamter": 199.28},
+          {"name": "bod", "analyzedParamter": 133.17},
+          {"name": "cod", "analyzedParamter": 275.27},
           {"name": "co3", "analyzedParamter": 81.14}
         ]
       },
@@ -396,6 +444,8 @@ getSamples() => [
           {"name": "cl", "analyzedParamter": 45.69},
           {"name": "no3", "analyzedParamter": 91.27},
           {"name": "so4", "analyzedParamter": 171.83},
+          {"name": "bod", "analyzedParamter": 125.69},
+          {"name": "cod", "analyzedParamter": 233.45},
           {"name": "co3", "analyzedParamter": 63.22}
         ]
       }

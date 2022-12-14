@@ -2,15 +2,15 @@ class Rweight {
   Rweight({
     required this.name,
     required this.permissibleLimits,
-    required this.relativeWeight,
+    required this.weight,
   });
   late final String name;
   late final int permissibleLimits;
-  late final double relativeWeight;
+  late final int weight;
 
   Rweight.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     permissibleLimits = json['permissibleLimits'];
-    relativeWeight = json['relativeWeight'];
+    weight = json['weight'];
   }
 }

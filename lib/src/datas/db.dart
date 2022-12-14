@@ -1,115 +1,70 @@
-import 'package:wqi_program/src/b.dart';
+import 'package:wqi_program/src/datas/samples_model.dart';
 
 getParams() {
   return {"rweight": getrelativeWeights(), "samples": getSamples()};
 }
-
-// getrelativeWeights() {
-//   return [
-//     {
-//       "name": "ph",
-//       "permissibleLimits": 65,
-//       "relativeWeight": 0.121,
-//     },
-//     {
-//       "name": "tds",
-//       "permissibleLimits": 500,
-//       "relativeWeight": 0.121,
-//     },
-//     {
-//       "name": "ca",
-//       "permissibleLimits": 75,
-//       "relativeWeight": 0.061,
-//     },
-//     {
-//       "name": "mg",
-//       "permissibleLimits": 50,
-//       "relativeWeight": 0.061,
-//     },
-//     {
-//       "name": "na",
-//       "permissibleLimits": 200,
-//       "relativeWeight": 0.061,
-//     },
-//     {
-//       "name": "k",
-//       "permissibleLimits": 55,
-//       "relativeWeight": 0.061,
-//     },
-//     {
-//       "name": "hco3",
-//       "permissibleLimits": 1000,
-//       "relativeWeight": 0.091,
-//     },
-//     {
-//       "name": "cl",
-//       "permissibleLimits": 250,
-//       "relativeWeight": 0.091,
-//     },
-//     {
-//       "name": "no3",
-//       "permissibleLimits": 50,
-//       "relativeWeight": 0.152,
-//     },
-//     {
-//       "name": "s04",
-//       "permissibleLimits": 250,
-//       "relativeWeight": 0.121,
-//     },
-//   ];
-// }
 
 getrelativeWeights() {
   return [
     {
       "name": "ph",
       "permissibleLimits": 0,
-      "relativeWeight": 0.129,
+      "weight": 4,
     },
     {
       "name": "tds",
       "permissibleLimits": 500,
-      "relativeWeight": 0.129,
+      "weight": 4,
     },
     {
       "name": "ca",
       "permissibleLimits": 75,
-      "relativeWeight": 0.064,
+      "weight": 2,
     },
     {
       "name": "mg",
       "permissibleLimits": 20,
-      "relativeWeight": 0.064,
+      "weight": 2,
     },
     {
       "name": "na",
       "permissibleLimits": 200,
-      "relativeWeight": 0.064,
+      "weight": 2,
     },
     {
       "name": "k",
       "permissibleLimits": 10,
-      "relativeWeight": 0.064,
+      "weight": 2,
     },
     {
       "name": "hco3",
       "permissibleLimits": 125,
-      "relativeWeight": 0.096,
+      "weight": 3,
     },
     {
       "name": "cl",
       "permissibleLimits": 250,
-      "relativeWeight": 0.096,
+      "weight": 3,
     },
     {
       "name": "no3",
       "permissibleLimits": 50,
-      "relativeWeight": 0.161,
+      "weight": 5,
     },
     {
       "name": "s04",
       "permissibleLimits": 100,
-      "relativeWeight": 0.129,
+      "weight": 4,
+    },
+    {
+      "name": "bod",
+      "permissibleLimits": 20,
+      "weight": 5,
+    },
+    {
+      "name": "cod",
+      "permissibleLimits": 120,
+      "weight": 5,
     },
   ];
 }
