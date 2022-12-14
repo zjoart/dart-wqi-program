@@ -1,11 +1,10 @@
-import 'dart:convert';
-
 import 'package:wqi_program/src/models/relative_weight_model.dart';
 import 'package:wqi_program/src/models/sample_model.dart';
 import 'package:wqi_program/src/utils.dart';
 
 import 'src/functions/funcs.dart';
 
+const rwlength = 10;
 Future<Map<String, dynamic>> startCalculation(
     List<Rweight> rweight, List<Params> params) async {
   final qualityRatingMap = {};
@@ -17,7 +16,7 @@ Future<Map<String, dynamic>> startCalculation(
   List<double> relativeWeightList = [];
   // print(rweight.length);
   // print(params.length);
-  assert(rweight.length == 12 && params.length == 13);
+  assert(rweight.length == rwlength && params.length == 13);
   for (int i = 0; i < rweight.length; i++) {
     weightTotal += rweight[i].weight;
   }
@@ -43,7 +42,7 @@ Future<Map<String, dynamic>> startCalculation(
   // print("QUALITY RATING LIST: $qualityRatingList");
   // print("SUBINDEX LIST: $subIndexList");
   double sumOfRelativeWeight = 0.0;
-  assert(relativeWeightList.length == 12);
+  assert(relativeWeightList.length == rwlength);
   for (int i = 0; i < relativeWeightList.length; i++) {
     sumOfRelativeWeight += relativeWeightList[i];
   }

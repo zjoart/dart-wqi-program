@@ -9,12 +9,12 @@ getrelativeWeights() {
     {
       "name": "ph",
       "permissibleLimits": 0,
-      "weight": 4,
+      "weight": 2,
     },
     {
       "name": "tds",
       "permissibleLimits": 500,
-      "weight": 4,
+      "weight": 5,
     },
     {
       "name": "ca",
@@ -54,18 +54,18 @@ getrelativeWeights() {
     {
       "name": "s04",
       "permissibleLimits": 100,
-      "weight": 4,
-    },
-    {
-      "name": "bod",
-      "permissibleLimits": 20,
       "weight": 5,
     },
-    {
-      "name": "cod",
-      "permissibleLimits": 120,
-      "weight": 5,
-    },
+    // {
+    //   "name": "bod",
+    //   "permissibleLimits": 20,
+    //   "weight": 5,
+    // },
+    // {
+    //   "name": "cod",
+    //   "permissibleLimits": 120,
+    //   "weight": 5,
+    // },
   ];
 }
 

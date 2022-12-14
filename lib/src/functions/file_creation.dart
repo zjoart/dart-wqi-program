@@ -33,13 +33,13 @@ createFile(rawData) async {
                     ...data.valuesModel.map((r) {
                       final status = r.resultModel.waterQualityIndex <= 25
                           ? "Excellent"
-                          : (r.resultModel.waterQualityIndex >= 26 &&
+                          : (r.resultModel.waterQualityIndex > 25 &&
                                   r.resultModel.waterQualityIndex <= 50)
                               ? "Good"
-                              : (r.resultModel.waterQualityIndex >= 51 &&
+                              : (r.resultModel.waterQualityIndex > 50 &&
                                       r.resultModel.waterQualityIndex <= 75)
                                   ? "Poor"
-                                  : (r.resultModel.waterQualityIndex >= 76 &&
+                                  : (r.resultModel.waterQualityIndex > 75 &&
                                           r.resultModel.waterQualityIndex <=
                                               100)
                                       ? "Very poor"
